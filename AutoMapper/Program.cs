@@ -12,7 +12,8 @@ namespace AutoMapper
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<AuthorModel, AuthorDTO>();
+                cfg.CreateMap<AuthorModel, AuthorDTO>()
+                .ForMember(dest => dest.Age, opts => opts.MapFrom(src => CaclulateYears(src.BirthDay)));
             });
             IMapper iMapper = config.CreateMapper();
             var source = new AuthorModel();
@@ -29,6 +30,11 @@ namespace AutoMapper
             Console.WriteLine(" was born " + destination.BirthDay.ToString() + ", so the author is "
                 + destination.Age);
             Console.Read();
+        }
+
+        private static object CaclulateYears(DateTime birthDay)
+        {
+            return 1234;
         }
     }
     public class AuthorModel
