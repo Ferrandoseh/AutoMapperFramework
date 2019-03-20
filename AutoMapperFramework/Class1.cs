@@ -8,5 +8,7 @@ namespace AutoMapperFramework
 {
     public class Class1
     {
+        Console.WriteLine("Author Name: " + destination.FirstName + " " + destination.LastName);
     }
+    
 }
